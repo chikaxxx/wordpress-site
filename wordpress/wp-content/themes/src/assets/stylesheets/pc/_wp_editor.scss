@@ -1,0 +1,226 @@
+// ------------------------------
+// WordPress wysiwyg Styles
+// ------------------------------
+
+// 段落
+p {
+    display: block;
+    margin: 1em 0;
+}
+
+// ボールド
+b, strong {
+    font-weight: bold;
+    font-weight: 700;
+}
+
+// イタリック
+dfn, cite, em, i {
+    font-style: italic;
+}
+
+// 打ち消し
+del, span[style='text-decoration: line-through;'] {
+    opacity: 0.8;
+}
+
+// リスト共通
+ul, ol {
+  list-style-position: inside !important;
+  padding-left: 0;
+  display: block;
+  margin-bottom: 1.75em;
+  li {
+    margin-top: .1em;
+    // &:first-child {
+    //   margin-top: 0;
+    // }
+  }
+}
+// 番号なしリスト
+ul {
+  list-style: disc;
+  padding-left: .4em;
+  li {
+    @include indents(.8em);
+  }
+}
+// 番号付きリスト
+ol {
+  list-style: decimal;
+  li {
+    @include indents(1.3em);
+  }
+}
+
+// 引用
+blockquote {
+  display: block;
+  border-left: 4px solid #1a1a1a;
+  color: #686868;
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.6;
+  padding-left: 1.2em;
+  margin: 0;
+  margin-bottom: 1.75em;
+  p {
+    margin-bottom: 1.4rem;
+  }
+}
+blockquote, q {
+ -webkit-hyphens: none;
+ -moz-hyphens: none;
+ -ms-hyphens: none;
+ hyphens: none;
+ quotes: none;
+}
+
+// 横線
+hr {
+ background-color: #d1d1d1;
+ background-color: rgba(51, 51, 51, 0.1);
+ border: 0;
+ height: 1px;
+ margin-bottom: 1.75em;
+}
+
+// 左寄せ
+$alignpd: 16px;
+.alignleft {
+  float: left;
+  padding: 0 $alignpd $alignpd 0;
+}
+
+// 中央寄せ
+.aligncenter {
+  display: block;
+  margin: $alignpd auto;
+}
+
+// 右寄せ
+.alignright {
+  float: right;
+  padding: 0 0 $alignpd $alignpd;
+}
+
+// 見出し
+h1, h2, h3, h4, h5, h6 {
+  clear: both;
+  font-weight: 700;
+  margin: 1em 0;
+}
+
+// h1, h2
+h1,
+h2 {
+  margin-top: 44px;
+
+  @include pcFont(24,24,170,bold);
+  border-left: 6px solid $key-color-01;
+  padding: 10px 24px;
+
+}
+
+// h3
+h3 {
+  position: relative;
+  @include pcFont(24,28,180,bold);
+  margin: 28px 0 10px;
+  padding: 0 30px;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    @include centering(false,true);
+    left: 0;
+    size: 9px 5px;
+    background-color: $key-color-01;
+  }
+}
+
+
+// h4.5.6
+h4, h5, h6 {
+  position: relative;
+  @include pcFont(20,28,170,bold);
+  margin: 25px 0 10px;
+  padding: 0 30px;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    @include centering(false,true);
+    left: 0;
+    size: 9px 5px;
+    background-color: #bfbfbf;
+  }
+}
+
+// 整形済みテキスト
+pre {
+    background-color: rgba(0, 0, 0, 0.01);
+    border: 1px solid #d1d1d1;
+  font-size: 16px;
+  font-size: 1rem;
+  margin: 1em 0;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1.75em;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+code, kbd, tt, var, samp, pre {
+    font-family: Inconsolata, monospace;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+
+// clearfix
+.clearfix {
+  overflow: hidden;
+  zoom: 1;
+}
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+// image
+img[class*="wp-image-"],
+img[class*="attachment-"] {
+  height: auto;
+  max-width: 100%;
+  margin: 20px 0;
+}
+
+
+
+// list style 追加
+ul {
+  list-style-position: outside !important;
+  padding-left: 1.2em;
+  li {
+    padding-left: 0;
+    text-indent: 0;
+  }
+}
+// 番号付きリスト
+ol {
+  list-style-position: inside !important;
+  list-style: decimal;
+  li {
+    // @include indents(1.3em);
+    padding-left: 0;
+    text-indent: -1.3em !important;
+    padding-left: 1.3em !important;
+  }
+}
+

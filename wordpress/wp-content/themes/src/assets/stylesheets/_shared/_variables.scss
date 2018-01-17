@@ -1,0 +1,41 @@
+/* ────────────────────────────────────────────────────────────
+	color
+──────────────────────────────────────────────────────────── */
+
+$base-color-01: #000;
+
+$key-color-01: #3757a8;
+$key-color-02: red;
+
+$alert-color-01: #000;
+
+$text-color-01: #333;
+$text-color-02: #3e312b;
+
+$link-color-01: #000;
+
+$bg-color-01: #eee;
+$bg-color-02: pink;
+
+$border-color-01: #ccc;
+$border-color-02: #e5e5e5;
+
+$tap-highlight-color: rgba(#fff,.4);
+
+/* ────────────────────────────────────────────────────────────
+	others
+──────────────────────────────────────────────────────────── */
+
+$path_pc: "../images/pc/";
+$path_sp: "../images/sp/";
+$inner-base: 1580;	//Photoshop カンプサイズ÷2
+
+/* ────────────────────────────────────────────────────────────
+	Font
+──────────────────────────────────────────────────────────── */
+
+$font-roboto: "Roboto Condensed", "a-otf-gothic-bbb-pr6n";
+
+$font-hiragino: "Hiragino Kaku Gothic Pro", Meiryo, Osaka, "MS PGothic", sans-serif;
+
+$font-yugothic: "Yugothic";

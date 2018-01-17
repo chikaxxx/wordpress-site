@@ -1,0 +1,297 @@
+//=============================================================================
+//
+//  mixin, functions
+//
+//=============================================================================
+// ------------------------------------------------------
+// mediaquery
+// ------------------------------------------------------
+
+@mixin hide-text() {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+// ------------------------------------------------------
+// utility
+// ------------------------------------------------------
+@function chP($pSize, $wSize:750){
+  @return unquote( $pSize / $wSize * 100 + "%" );
+}
+
+@mixin headings($from: 1, $to: 6){
+  @for $i from $from through $to{
+    h#{$i}{
+      @content
+    }
+  }
+};
+
+@mixin all-link($property, $value) {
+  &:link,
+  &:visited,
+  &:focus,
+  &:hover,
+  &:active {
+    #{$property}:$value;
+  }
+}
+
+@mixin centering($horizontal: true, $vertical: true) {
+  position: absolute;
+
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+
+
+@mixin ellipsisUnit {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+@function ls($font-size) {
+  @return ($font-size / 1000)+em;
+}
+
+@function lh($font-size,$line-height) {
+  @return  $line-height / $font-size;
+}
+
+@mixin indents($em) {
+  text-indent: -$em;
+  padding-left: $em;
+}
+
+@mixin pcFont($size,$line-height,$letter-spacing: 0, $font-weight: normal) {
+  letter-spacing: ls($letter-spacing);
+  font-size: ($size/10) + rem;
+  line-height: lh($size, $line-height);
+  font-weight: $font-weight;
+}
+
+@mixin spFont($size,$line-height,$letter-spacing: 0, $font-weight: normal) {
+  letter-spacing: ls($letter-spacing);
+  font-size: ($size/10)/2 + rem;
+  line-height: lh($size, $line-height);
+  font-weight: $font-weight;
+}
+
+// ------------------------------------------------------
+// sprite mixin
+// ------------------------------------------------------
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+  @include hide-text;
+}
+
+// ------------------------------------------------------
+// retina sprite mixin
+// ------------------------------------------------------
+@mixin r-sprite-width($sprite) {
+  width: nth($sprite, 5)/2;
+}
+
+@mixin r-sprite-height($sprite) {
+  height: nth($sprite, 6)/2;
+}
+
+@mixin r-sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3)/2;
+  $sprite-offset-y: nth($sprite, 4)/2;
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin r-sprite-size($sprite) {
+  background-size: nth($sprite, 7)/2 nth($sprite, 8)/2;
+}
+
+@mixin r-sprite($sprite) {
+  @include sprite-image($sprite);
+  @include r-sprite-position($sprite);
+  @include r-sprite-width($sprite);
+  @include r-sprite-height($sprite);
+  @include r-sprite-size($sprite);
+  @include hide-text;
+}
+
+@mixin r-sprite-elem($sprite) {
+  content: "";
+  display: block;
+  @include sprite-image($sprite);
+  @include r-sprite-position($sprite);
+  @include r-sprite-width($sprite);
+  @include r-sprite-height($sprite);
+  @include r-sprite-size($sprite);
+  @include hide-text;
+}
+
+// ------------------------------------------------------
+// svg mixin
+// ------------------------------------------------------
+
+@mixin pc-svg-elem($name,$width:18,$height:18) {
+  display: block;
+  content: "";
+  width: $width + px;
+  height: $height + px;
+  $svg-image: $path_pc + $name + ".svg";
+  background-image: url(#{$svg-image});
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+@mixin sp-svg-elem($name,$width:1,$height:1) {
+  display: block;
+  content: "";
+  width: $width +em;
+  height: 0;
+  padding-bottom: $height +em;
+  $svg-image: $path_sp + $name + ".svg";
+  background-image: url(#{$svg-image});
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+// ------------------------------------------------------
+// SP 可変画像 mixin
+// ------------------------------------------------------
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+@function img-width($sprite,$base) {
+  $width-px: nth($sprite, 5);
+  $width-per: "'" + ($width-px / $base * 100) + "'";
+  @return unquote(str-replace($width-per, "px", "%"));
+}
+
+@function img-height($sprite,$base) {
+  $height-px: nth($sprite, 6);
+  $height-per: "'" + ($height-px / $base * 100) + "'";
+  @return unquote(str-replace($height-per, "px", "%"));
+}
+@mixin perImg($path,$base:750,$ext:"png"){ //$base はPhotoshopのカンプサイズ
+  width: img-width($path, $base);
+  height: 0;
+  padding-bottom: img-height($path, $base);
+  $sprite-image: $path_sp + nth($path, 10) + "." + $ext;
+  background-image: url(#{$sprite-image});
+  background-size: contain;
+  background-repeat: no-repeat;
+  @include hide-text;
+}
+
+@mixin perImgElement($path,$base:750){ //$base はPhotoshopのカンプサイズ
+  display: block;
+  content: "";
+  width: img-width($path, $base);
+  height: 0;
+  padding-bottom: img-height($path, $base);
+  $sprite-image: $path_sp + nth($path, 10) + ".png";
+  background-image: url(#{$sprite-image});
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* ────────────────────────────────────────────────────────────
+  material icons
+──────────────────────────────────────────────────────────── */
+// for PC only
+@mixin material-icons($size:24) {
+  display: block;
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: $size + px;  /* 推奨サイズ */
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+
+  /* WebKitブラウザサポート */
+  -webkit-font-smoothing: antialiased;
+  /* Chrome、Safariサポート */
+  text-rendering: optimizeLegibility;
+
+  /* Firefoxサポート */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* IEサポート */
+  font-feature-settings: 'liga';
+}
+
+
+/* ────────────────────────────────────────────────────────────
+Others
+──────────────────────────────────────────────────────────── */
+
+
+@keyframes hover-effect-skelton-01 {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: .8;
+  }
+}
+
+@mixin hover-effect-skelton-01 {
+  animation: hover-effect-skelton-01 linear 1;
+  animation-fill-mode: forwards;
+  animation-duration: 0.2s;
+  cursor: pointer;
+}
+
+@mixin hover-effect-color-01 {
+  text-decoration: none;
+  color: $key-color-01;
+  cursor: pointer;
+}
+
+
+@keyframes hover-effect-bg-01 {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: .8;
+  }
+}
+
+@mixin hover-effect-bg-01 {
+  background-color: $bg-color-02;
+}
+
+
+%bg-cover {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  @include hide-text;
+}

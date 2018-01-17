@@ -1,0 +1,288 @@
+@charset "UTF-8";
+/* ────────────────────────────────────────────────────────────
+	color
+──────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────
+	others
+──────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────
+	Font
+──────────────────────────────────────────────────────────── */
+/* http://meyerweb.com/eric/tools/css/pcreset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ────────────────────────────────────────────────────────────
+  material icons
+──────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────
+Others
+──────────────────────────────────────────────────────────── */
+@-webkit-keyframes hover-effect-skelton-01 {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: .8;
+  }
+}
+@keyframes hover-effect-skelton-01 {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: .8;
+  }
+}
+
+@-webkit-keyframes hover-effect-bg-01 {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: .8;
+  }
+}
+
+@keyframes hover-effect-bg-01 {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: .8;
+  }
+}
+
+.is-hide {
+  display: none;
+}
+
+.is-block {
+  display: block;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+main {
+  display: block;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+input,
+textarea {
+  -webkit-appearance: none;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+/* ────────────────────────────────────────────────────────────
+  common
+──────────────────────────────────────────────────────────── */
+.js-is-show {
+  display: block;
+}
+
+.js-is-hide {
+  display: none;
+}
+
+div.wpcf7 .ajax-loader {
+  margin: 0 !important;
+  background-image: none !important;
+}
+
+.wpcf7-form {
+  padding-top: 6px;
+}
+
+.wpcf7-not-valid-tip {
+  margin-top: 8px;
+  color: red;
+}
+
+.screen-reader-response {
+  display: none;
+}
+
+input + .wpcf7-not-valid-tip {
+  display: inline-block;
+  padding-left: 10px;
+}
+
+textarea + .wpcf7-not-valid-tip {
+  display: block;
+  line-height: 0;
+  margin-bottom: 20px;
+}
+
+.wpcf7-not-valid {
+  border: 1px solid #ff0000 !important;
+}
+
+.wpcf7-response-output {
+  display: none;
+  width: 600px;
+  padding: 18px 0 !important;
+  margin: 0 auto 40px !important;
+  background-color: #fff;
+  letter-spacing: 0.06em;
+  font-size: 1.8rem;
+  line-height: 1.11111;
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid #3757a8;
+}
+
+.wpcf7-response-output.wpcf7-mail-sent-ok {
+  display: block;
+  border: 2px solid #3757a8;
+}
+
+.wpcf7-response-output.wpcf7-mail-sent-ng {
+  display: block;
+  border-color: #ff0000;
+}
+
+.wpcf7-response-output.wpcf7-validation-errors {
+  display: block;
+  border-color: #ff0000;
+}
+
+.is-sp {
+  display: none;
+}
+
+html {
+  position: relative;
+  height: 100%;
+  min-height: 100%;
+  font-family: "Yugothic";
+  font-size: 62.5%;
+  color: transparent;
+}
+
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  font-size: 1.6rem;
+  min-height: 100%;
+  width: 100%;
+  min-width: 1200px;
+  padding-bottom: 99px;
+}
+
+a {
+  text-decoration: none;
+}
+
+::-moz-selection {
+  background-color: rgba(105, 214, 255, 0.5);
+}
+
+::selection {
+  background-color: rgba(105, 214, 255, 0.5);
+}
+
+::-moz-selection {
+  background-color: rgba(105, 214, 255, 0.5);
+}
+
+/* styles to use when web fonts are loading */
+.wf-loading {
+  color: transparent;
+}
+
+/* styles to use when web fonts are active */
+.wf-active {
+  color: #000;
+}
+
+/* styles to use when web fonts are inactive */
+.wf-inactive {
+  color: #000;
+}
+
+.ly-header {
+  padding: 2em 0;
+  background-color: rgba(238, 238, 238, 0.7);
+}
+
+.ly-footer {
+  padding: 2em 0;
+  background-color: rgba(238, 238, 238, 0.7);
+}
+
+.ly-contents {
+  padding: 5em 0;
+  width: 80%;
+  margin: 0 auto;
+  line-height: 2;
+}
+
+/*# sourceMappingURL=style.pc.css.map*/

@@ -1,0 +1,46 @@
+@if index($hamburger-types, squeeze) {
+  $speed: 0.28s;
+  $speed2: 0.2s;
+
+  /*
+   * Squeeze
+   */
+  .hamburger--squeeze {
+    .hamburger-inner {
+      transition-duration: $speed;
+      transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+      &::before {
+        transition: top $speed $speed2 ease,
+                    opacity $speed ease;
+      }
+
+      &::after {
+        transition: bottom $speed $speed2 ease,
+                    transform $speed cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      }
+    }
+
+    &.is-active {
+      .hamburger-inner {
+        transform: rotate(45deg);
+        transition-delay: $speed2;
+        transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+        &::before {
+          top: 0;
+          opacity: 0;
+          transition: top $speed ease,
+                      opacity $speed $speed2 ease;
+        }
+
+        &::after {
+          bottom: 0;
+          transform: rotate(-90deg);
+          transition: bottom $speed ease,
+                      transform $speed $speed2 cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+      }
+    }
+  }
+}

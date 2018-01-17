@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+//=============================================================================
+//
+//  SP
+//
+//=============================================================================
+
+@import "../_shared/common";
+@import "_wp_contactform7";
+
+@import "_hamburgers-settings";
+@import "hamburgers/hamburgers";
+
+$inner-base: 662;
+
+//=============================================================================
+//
+//  utility
+//
+//=============================================================================
+@function get_vw($size, $viewport:375){
+  $rate: 100 / $viewport;
+  @return $rate * $size * 1vw;
+}
+
+@mixin fz_vw($font_size:10){
+  font-size: $font_size * 1px;
+  font-size: get_vw($font_size);
+}
+
+@mixin display-iphone5($width: 321px) {
+  @media screen and (max-width: $width){
+    @content;
+
+  }
+}
+
+@mixin display-min($width: 1200px) {
+  @media screen and (max-width: $width){
+    @content;
+  }
+}
+
+.is-pc {
+  display: none;
+}
+
+//=============================================================================
+//
+//  base
+//
+//=============================================================================
+
+$footer-height: 99px;
+
+html {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  font-family: $font-yugothic;
+  font-size: 62.5%;
+  color: transparent; // web font 読み込み中のちらつきを防ぐため
+
+  @include display-iphone5 {
+    font-size: 53%;
+  }
+
+  &.is-android {
+    font-size: 60%;
+  }
+}
+
+body {
+  position: relative;
+  @include spFont(28,46,20);
+  min-height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(#69d6ff,.5);
+}
+
+a {
+  @include all-link(color, $text-color-01);
+  @include all-link(text-decoration, none);
+
+  -webkit-tap-highlight-color: $tap-highlight-color;
+}
+
+img {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background-color: rgba(#69d6ff,.5);
+}
+
+::-moz-selection {
+  background-color: rgba(#69d6ff,.5);
+}
+
+// ------------------------------------------------------
+// web font 読み込み関連の設定
+// ------------------------------------------------------
+
+/* styles to use when web fonts are loading */
+.wf-loading {
+  color: transparent;
+}
+
+/* styles to use when web fonts are active */
+.wf-active {
+  color: #000;
+}
+
+/* styles to use when web fonts are inactive */
+.wf-inactive {
+  color: #000;
+}
+
+//=============================================================================
+//
+//  layout
+//
+//=============================================================================
+.ly-header {
+  padding: 2em 0;
+  background-color: rgba(#eee,0.7);
+}
+
+.ly-footer {
+  padding: 2em 0;
+  background-color: rgba(#eee,0.7);
+}
+
+.ly-contents  {
+  padding: 5em 0;
+  width: 80%;
+  margin: 0 auto;
+  line-height: 2;
+}

@@ -1,0 +1,67 @@
+//=============================================================================
+//
+//  WPプラグイン ContactForm7用のスタイル
+//
+//=============================================================================
+//loading
+div.wpcf7 .ajax-loader {
+	margin: 0!important;
+	background-image: none !important;
+}
+
+.wpcf7-not-valid-tip {
+	margin-top: .4em;
+	color: $key-color-02;
+	font-size: 1.4rem;
+}
+
+.screen-reader-response {
+	display: none;
+}
+
+input + .wpcf7-not-valid-tip {
+	display: block;
+}
+
+textarea + .wpcf7-not-valid-tip {
+	display: block;
+	margin-bottom: 1em;
+}
+
+.wpcf7-display-none {
+	display: none;
+}
+
+.wpcf7-not-valid {
+	border: 1px solid #ff0000 !important;
+}
+
+.wpcf7-response-output {
+	box-sizing: border-box;
+	width: 100%;
+	margin: 2em 0 1em !important;
+	padding: .8em !important;
+	background-color: #fff !important;
+	font-size: 1.4rem;
+	line-height: 1.4;
+	border: 2px solid $key-color-01;
+
+	// メール送信成功時
+	&.wpcf7-mail-sent-ok {
+		display: block;
+		border: 2px solid $key-color-01;
+	}
+
+	// メール送信失敗時
+	&.wpcf7-mail-sent-ng {
+		display: block;
+		border-color: #ff0000;
+	}
+
+	// 入力項目エラー時
+	&.wpcf7-validation-errors {
+		display: block;
+		border-color: #ff0000;
+	}
+}
+

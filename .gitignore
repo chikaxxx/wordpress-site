@@ -1,0 +1,20 @@
+uploads/ # WP管理画面から添付したメディアをgit管理に含めない
+
+wp-config.php # 各環境ごとに設定内容が異なるため
+.htaccess # 同上
+
+advanced-custom-fields-pro/ #有料プラグインなので
+
+log/
+logs/
+
+.sass-cache/
+
+node_modules/
+.DS_Store
+npm-debug.log
+
+*.js.map
+*.css.map
+package-lock.json
+

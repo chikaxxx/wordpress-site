@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+//=============================================================================
+//
+//  PC
+//
+//=============================================================================
+
+@import "sprite";
+@import "../_shared/common";
+@import "js";
+@import "_wp_contactform7";
+
+.is-sp {
+  display: none;
+}
+
+//=============================================================================
+//
+//  utility
+//
+//=============================================================================
+@function get_vw($size, $viewport:1200){
+  $rate: 100 / $viewport;
+  @return $rate * $size * 1vw;
+}
+
+@mixin fz_vw($font_size:10){
+  font-size: $font_size * 1px;
+  font-size: get_vw($font_size);
+}
+
+@mixin display-max($width: 1520px) {
+  @media screen and (min-width: $width){
+    @content;
+
+  }
+}
+
+@mixin display-min($width: 1200px) {
+  @media screen and (max-width: $width){
+    @content;
+  }
+}
+
+//=============================================================================
+//
+//  base
+//
+//=============================================================================
+
+$min-width: 1200px;
+$inner: 1066px;
+$footer-height: 99px;
+
+html {
+  // box-sizing: border-box;
+  position: relative;
+  height: 100%;
+  min-height: 100%;
+  font-family: $font-yugothic;
+  font-size: 62.5%;
+  color: transparent; // web font 読み込み中のちらつきを防ぐため
+}
+
+body {
+  box-sizing: border-box;
+  position: relative;
+  font-size: 1.6rem;
+  min-height: 100%;
+  width: 100%;
+  min-width: $min-width;
+  padding-bottom: $footer-height;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+::selection {
+  background-color: rgba(#69d6ff,.5);
+}
+
+::-moz-selection {
+  background-color: rgba(#69d6ff,.5);
+}
+
+// ------------------------------------------------------
+// web font 読み込み関連の設定
+// ------------------------------------------------------
+
+/* styles to use when web fonts are loading */
+.wf-loading {
+  color: transparent;
+}
+
+/* styles to use when web fonts are active */
+.wf-active {
+  color: #000;
+}
+
+/* styles to use when web fonts are inactive */
+.wf-inactive {
+  color: #000;
+}
+
+//=============================================================================
+//
+//  layout
+//
+//=============================================================================
+.ly-header {
+  padding: 2em 0;
+  background-color: rgba(#eee,0.7);
+}
+
+.ly-footer {
+  padding: 2em 0;
+  background-color: rgba(#eee,0.7);
+}
+
+.ly-contents  {
+  padding: 5em 0;
+  width: 80%;
+  margin: 0 auto;
+  line-height: 2;
+}
